@@ -1,4 +1,4 @@
 package com.michaelmckibbin.ucms.assessments;
 
-public class Assignment {
+public class Assignment extends Assessment {
 }

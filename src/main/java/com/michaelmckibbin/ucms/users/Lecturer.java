@@ -1,4 +1,4 @@
 package com.michaelmckibbin.ucms.users;
 
-public class Lecturer {
+public class Lecturer extends User {
 }
