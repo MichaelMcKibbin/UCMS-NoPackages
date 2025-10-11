@@ -1,4 +1,4 @@
-package com.michaelmckibbin.ucms.app;
+package com.ucms.app;
 
 public class Main {
     public static void main(String[] args) {
