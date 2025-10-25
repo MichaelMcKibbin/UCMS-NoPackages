@@ -1,8 +1,8 @@
-package com.ucms.users;
+package com.ucms.domain;
+
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  * The Lecturer class represents a lecturer user in the system.
@@ -14,8 +14,8 @@ public class Lecturer extends User {
     private String lecturerId;
     // Department the lecturer belongs to
     private String department;
-    // List of modules assigned to the lecturer (composition example)
-    private List<String> modulesTaught;
+    // List of courseModules assigned to the lecturer (composition example)
+    private List<String> courseModulesTaught;
 
     // Constructor to create a Lecturer object.
     // Calls the superclass (User) constructor to set common attributes.
@@ -24,8 +24,8 @@ public class Lecturer extends User {
         super(firstname, lastname, email, password, address, phone);
         this.lecturerId = lecturerId;
         this.department = department;
-        // Initialize the list of modules. Find out the difference between Array and ArrayList
-        this.modulesTaught = new ArrayList<>();
+        // Initialize the list of courseModules. Find out the difference between Array and ArrayList
+        this.courseModulesTaught = new ArrayList<>();
     }
 
     // Getter and Setter methods for encapsulated fields
@@ -45,19 +45,19 @@ public class Lecturer extends User {
         this.department = department;
     }
 
-    public List<String> getModulesTaught() {
-        return modulesTaught;
+    public List<String> getCourseModulesTaught() {
+        return courseModulesTaught;
     }
 
-    // Assigns a new module to the lecturer.
-    public void assignModule(String moduleName) {
-        modulesTaught.add(moduleName);
-        System.out.println(getFirstname() + " is now assigned to teach " + moduleName);
+    // Assigns a new courseModule to the lecturer.
+    public void assignCourseModule(String courseModuleName) {
+        courseModulesTaught.add(courseModuleName);
+        System.out.println(getFirstname() + " is now assigned to teach " + courseModuleName);
     }
 
-    // Displays all modules currently taught by the lecturer.
-    public void viewModules() {
-        System.out.println("Modules taught by " + getFirstname() + ": " + modulesTaught);
+    // Displays all courseModules currently taught by the lecturer.
+    public void viewCourseModules() {
+        System.out.println("Course Modules taught by " + getFirstname() + getLastname() +": " + courseModulesTaught);
     }
 
     // Overrides the default toString() method to provide meaningful output for Lecturer objects.
@@ -66,4 +66,3 @@ public class Lecturer extends User {
         return "Lecturer: " + getFirstname() + " " + getLastname() + " (" + lecturerId + ")";
     }
 }
-

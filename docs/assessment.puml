@@ -1,0 +1,13 @@
+@startuml
+title Assessment Module Hierarchy
+abstract class Assessment
+class FinalExam
+class TestAssessment
+class AssignmentAssessment
+Assessment <|-- FinalExam
+Assessment <|-- TestAssessment
+Assessment <|-- AssignmentAssessment
+Assessment --> CourseModule
+Assessment --> Student
+Assessment --> Lecturer
+@enduml

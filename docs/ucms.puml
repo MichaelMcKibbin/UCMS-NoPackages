@@ -1,0 +1,129 @@
+@startuml
+title UCMS – Revised Exercise 1 (Class Model)
+
+package "com.ucms.domain" {
+  abstract class User {
+    - firstname : String
+    - lastname  : String
+    - email     : String
+    - password  : String
+    - address   : String
+    - phone     : String
+  }
+
+  class Student {
+    - studentId : String
+    - programme : String
+    - gpa : double
+    + getStudentId() : String
+  }
+
+  class Lecturer {
+    - lecturerId : String
+    - department : String
+    - modulesTaught : List<String>
+    + getLecturerId() : String
+    + assignModule(name:String) : void
+    + viewModules() : void
+  }
+
+  class Course {
+    - courseCode : String
+    - courseName : String
+    - modules : List<CourseModule>
+    - students : List<Student>
+    + addCourseModule(m:CourseModule) : void
+    + enrollStudent(s:Student) : void
+    + viewModules() : void
+    + viewStudents() : void
+  }
+
+  class CourseModule {
+    - courseModuleCode : String
+    - moduleName : String
+    - lecturer : Lecturer
+    + getCourseModuleCode() : String
+    + getModuleName() : String
+    + setLecturer(l:Lecturer) : void
+  }
+
+  User <|-- Student
+  User <|-- Lecturer
+  Course "1" --> "*" CourseModule
+  Course "1" --> "*" Student
+  CourseModule "1" --> "1" Lecturer
+}
+
+package "com.ucms.assessment" {
+  enum AssessmentType {
+  FINAL_EXAM
+  TEST
+  ASSIGNMENT
+  }
+
+  abstract class Assessment {
+    - id : String
+    - module : com.ucms.domain.CourseModule
+    - student : com.ucms.domain.Student
+    - lecturer : com.ucms.domain.Lecturer
+    - totalMarks : int
+    - weight : double
+    - assignedDate : LocalDate
+    - dueDate : LocalDate
+    - takenDate : LocalDate
+    + getType() : AssessmentType
+    + summary() : String
+    + isOverdue(today:LocalDate) : boolean
+    + weightedScore(achieved:int) : double
+  }
+
+  class FinalExam {
+    - duration : Duration
+    - numberOfQuestions : int
+  }
+
+  class TestAssessment {
+    - numberOfQuestions : int
+  }
+
+  class AssignmentAssessment {
+    - requiresSubmissionLink : boolean
+  }
+
+  Assessment <|-- FinalExam
+  Assessment <|-- TestAssessment
+  Assessment <|-- AssignmentAssessment
+}
+
+package "com.ucms.admin" {
+  class Admin {
+    - role : String
+    - createdAt : LocalDate
+    + addStudent(repo:List<Student>, s:Student) : void
+    + removeStudent(repo:List<Student>, id:String) : boolean
+    + addLecturer(repo:List<Lecturer>, l:Lecturer) : void
+    + removeLecturer(repo:List<Lecturer>, id:String) : boolean
+    + createCourse(repo:List<Course>, c:Course) : void
+    + addCourseModule(c:Course, m:CourseModule) : void
+    + assignCourseModuleToLecturer(m:CourseModule, l:Lecturer) : void
+    + findStudentById(repo:List<Student>, id:String) : Optional<Student>
+  }
+
+  com.ucms.domain.User <|-- Admin
+  Admin ..> com.ucms.domain.Student
+  Admin ..> com.ucms.domain.Lecturer
+  Admin ..> com.ucms.domain.Course
+  Admin ..> com.ucms.domain.CourseModule
+}
+
+package "com.ucms.app" {
+  class Main
+  Main ..> com.ucms.admin.Admin : uses
+  Main ..> com.ucms.assessment.Assessment : demo polymorphism
+  Main ..> com.ucms.domain.Course
+  Main ..> com.ucms.domain.CourseModule
+  Main ..> com.ucms.domain.Student
+  Main ..> com.ucms.domain.Lecturer
+}
+
+@enduml

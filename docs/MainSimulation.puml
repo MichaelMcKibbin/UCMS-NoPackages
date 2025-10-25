@@ -1,0 +1,16 @@
+@startuml
+title Main Simulation – UCMS Workflow
+
+actor Admin
+actor Lecturer
+actor Student
+
+Admin -> Course : createCourse()
+Admin -> CourseModule : addCourseModule()
+Admin -> Lecturer : assignCourseModuleToLecturer()
+Lecturer -> Assessment : createFinalExam()
+Lecturer -> Assessment : createTestAssessment()
+Lecturer -> Assessment : createAssignmentAssessment()
+Student -> Assessment : takeAssessment()
+Assessment --> Student : weightedScore()
+@enduml

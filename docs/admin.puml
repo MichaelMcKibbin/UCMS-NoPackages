@@ -1,0 +1,10 @@
+@startuml
+title Admin Relationships
+User <|-- Admin
+User <|-- Student
+User <|-- Lecturer
+Admin --> Course
+Admin --> CourseModule
+Admin --> Student
+Admin --> Lecturer
+@enduml

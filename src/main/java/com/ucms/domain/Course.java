@@ -1,13 +1,12 @@
-package com.ucms.courses;
+package com.ucms.domain;
 
-import com.ucms.users.Student;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The Course class represents a university course.
- * A course consists of multiple modules and enrolled students.
+ * A course consists of multiple courseModules and enrolled students.
  */
 public class Course {
 
@@ -17,8 +16,8 @@ public class Course {
     // Name of the course (e.g., Computer Science)
     private String courseName;
 
-    // List of modules in the course (composition)
-    private List<Module> modules;
+    // List of courseModules in the course (composition)
+    private List<CourseModule> courseModules;
 
     // List of students enrolled in the course (composition)
     private List<Student> students;
@@ -29,7 +28,7 @@ public class Course {
     public Course(String courseCode, String courseName) {
         this.courseCode = courseCode;
         this.courseName = courseName;
-        this.modules = new ArrayList<>();
+        this.courseModules = new ArrayList<>();
         this.students = new ArrayList<>();
     }
 
@@ -50,8 +49,8 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public List<Module> getModules() {
-        return modules;
+    public List<CourseModule> getCourseModules() {
+        return courseModules;
     }
 
     public List<Student> getStudents() {
@@ -59,13 +58,13 @@ public class Course {
     }
 
     /**
-     * Adds a module to the course.
+     * Adds a courseModule to the course.
      *
-     * @param module Module to add
+     * @param courseModule CourseModule to add
      */
-    public void addModule(Module module) {
-        modules.add(module);
-        System.out.println(module.getModuleName() + " has been added to the course " + courseName);
+    public void addCourseModule(CourseModule courseModule) {
+        courseModules.add(courseModule);
+        System.out.println(courseModule.getCourseModuleName() + " has been added to the course " + courseName);
     }
 
     /**
@@ -79,12 +78,12 @@ public class Course {
     }
 
     /**
-     * Displays all modules in the course.
+     * Displays all courseModules in the course.
      */
-    public void viewModules() {
-        System.out.println("Modules for " + courseName + ":");
-        for (Module module : modules) {
-            System.out.println(module);
+    public void viewCourseModules() {
+        System.out.println("Course Modules for " + courseName + ":");
+        for (CourseModule courseModule : courseModules) {
+            System.out.println(courseModule);
         }
     }
 
@@ -100,6 +99,6 @@ public class Course {
 
     @Override
     public String toString() {
-        return courseCode + " - " + courseName + " (" + students.size() + " students, " + modules.size() + " modules)";
+        return courseCode + " - " + courseName + " (" + students.size() + " students, " + courseModules.size() + " courseModules)";
     }
 }
