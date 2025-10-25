@@ -14,6 +14,17 @@ public class Admin extends User {
     private final String role;
     private final LocalDate createdAt;
 
+    private String adminName() {
+        String f = getFirstname();
+        String l = getLastname();
+        String name =
+                ((f == null || f.isBlank()) && (l == null || l.isBlank()))
+                        ? "Admin"
+                        : ( ((f == null) ? "" : f.trim()) + " " + ((l == null) ? "" : l.trim()) ).trim();
+        return "[Admin: " + name + "]";
+    }
+
+
     // 1) no-arg style (minimal defaults) – calls the full constructor
     public Admin() {
         this("Admin", "User", "admin@example.com", "changeme", "N/A", "N/A",
@@ -40,7 +51,7 @@ public class Admin extends User {
     // --- Student management ---
     public void addStudent(List<Student> repo, Student s) {
         repo.add(s);
-        System.out.println("[Admin] Added student: " + s);
+        System.out.println(adminName()+ " "+" Added student: " + s);
     }
 
     public boolean removeStudent(List<Student> repo, String studentId) {
@@ -50,7 +61,7 @@ public class Admin extends User {
     // --- Lecturer management ---
     public void addLecturer(List<Lecturer> repo, Lecturer l) {
         repo.add(l);
-        System.out.println("[Admin] Added lecturer: " + l);
+        System.out.println(adminName()+ " "+" Added lecturer: " + l);
     }
 
     public boolean removeLecturer(List<Lecturer> repo, String lecturerId) {
@@ -61,22 +72,28 @@ public class Admin extends User {
     // --- Course / CourseModule management ---
     public void createCourse(List<Course> repo, Course c) {
         repo.add(c);
-        System.out.println("[Admin] Created course: " + c);
+        System.out.println(adminName()+ " "+" Created course: " + c);
     }
 
     public void addCourseModuleToCourse(Course c, CourseModule m) {
         c.addCourseModule(m); // uses your Course.addCourseModule(CourseModule)
-        System.out.println("[Admin] Added module " + m + " to course " + c);
+        System.out.println(adminName()+ " "+" Added module " + m + " to course " + c);
     }
 
     public void assignCourseModuleToLecturer(CourseModule m, Lecturer l) {
         m.setLecturer(l);  // uses your CourseModule.setLecturer(Lecturer)
         l.assignCourseModule(m.getCourseModuleName()); // uses your Lecturer.assignCourseModule(String)
-        System.out.println("[Admin] Assigned " + m + " to lecturer " + l);
+        System.out.println(adminName()+ " "+" Assigned " + m + " to lecturer " + l);
     }
 
     // --- Optional lookups ---
     public Optional<Student> findStudentById(List<Student> repo, String studentId) {
         return repo.stream().filter(s -> studentId.equals(s.getStudentId())).findFirst();
     }
+
+    public Optional<Lecturer> findLecturerById(List<Lecturer> repo, String lecturerId) {
+        return repo.stream().filter(l -> lecturerId.equals(l.toString())).findFirst();
+    }
+
+
 }

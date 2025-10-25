@@ -57,7 +57,7 @@ public class Lecturer extends User {
 
     // Displays all courseModules currently taught by the lecturer.
     public void viewCourseModules() {
-        System.out.println("Course Modules taught by " + getFirstname() + getLastname() +": " + courseModulesTaught);
+        System.out.println("Course Modules taught by " + getFirstname()+" "  + getLastname() +": " + courseModulesTaught);
     }
 
     // Overrides the default toString() method to provide meaningful output for Lecturer objects.
