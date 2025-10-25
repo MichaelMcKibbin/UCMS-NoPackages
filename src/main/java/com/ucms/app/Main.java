@@ -4,6 +4,7 @@ import com.ucms.admin.Admin;
 import com.ucms.assessment.Assessment;
 import com.ucms.assessment.AssignmentAssessment;
 import com.ucms.assessment.TestAssessment;
+import com.ucms.assessment.FinalExam;
 import com.ucms.domain.Course;
 import com.ucms.domain.CourseModule;
 import com.ucms.domain.Lecturer;
@@ -66,7 +67,7 @@ public class Main {
 
         // --- Assessments (polymorphic list) ---
         LocalDate today = LocalDate.now();
-        assessments.add(new com.ucms.assessment.FinalExam(
+        assessments.add(new FinalExam(
                 IdGenerator.next("A"),
                 m1, s1, lec1,
                 100, 0.6,
