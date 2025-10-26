@@ -78,17 +78,18 @@ The table below summarises the main object-oriented principles and design featur
 ---
 
 ## 4. UML Diagrams 
-The following diagrams and images are stored in the `/docs/` folder.
+The following UML diagrams and image files are stored in the `/docs/` folder. Each diagram illustrates a key part of the UCMS system, its relationships, and the application of OOP principles.
 
-| Diagram                               | Description                                                                                                                                                                                      |
-|:--------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **AssessmentModuleClass.png**         | Shows the abstract `Assessment` class and its three concrete subclasses (`FinalExamAssessment`, `TestAssessment`, `AssignmentAssessment`), with associations to `CourseModule`, `Student`, and `Lecturer`. |
-| **AssessmentModuleRelationships.png** | Shows the relationship hierarchy of the `Assessment` class.                                                                                                                                      |
-| **AdminRelationships.png**            | Shows `Admin` inheriting from `User` and its associations to `Student`, `Lecturer`, `Course`, and `CourseModule`.                                                                                |
-| **MainSimulation.png**                | Illustrates how the `Main` class coordinates the simulation, highlighting object interactions and polymorphic assessment handling.                                                               |
-| **ClassModel.png**                    | The complete UML Class Diagram - the 'AssessmentModuleClass' was extracted from this diagram                                                                                                     |
-| **ucms.puml**                         | PlantUML source file for the complete UML class diagram.                                                                                                                                         |
-| **src.md**                            | Mermaid UML class diagram source file.                                                                                                                                                           |
+| Diagram                              | Description                                                                                                                                                                                                                                                 |
+|:-------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **AssessmentClass.png**              | Focuses on the `Assessment hierarchy`, showing the abstract Assessment class and its three concrete subclasses (`FinalExamAssessment`, `TestAssessment`, and `AssignmentAssessment`), along with associations to `CourseModule`, `Student`, and `Lecturer`. |
+| **AdminRelationships.png**           | Displays the `Admin` class inheriting from `User` and its associations with `Student`, `Lecturer`, `Course`, and `CourseModule`, demonstrating management and composition relationships.                                                                    |
+| **MainSimulation.png**               | Sequence diagram demonstrating how the `Main` class coordinates interactions among users and assessments, illustrating polymorphism in action.                                                                                                              |
+| **ClassModelNoPackages.png**         | The complete UML class diagram showing all entities, inheritance hierarchies, and composition relationships in the no-packages version of the UCMS.                                                                                                         |
+| **assessmentClass.puml**             | PlantUML source file for Figure 1 (Assessment Class Diagram).                                                                                                                                                                                               |
+| **ClassModelNoPackages.puml**        | PlantUML source file for the complete UCMS class model (Figure 4).                                                                                                                                                                                          |
+| **ClassModelNoPackages_Mermaid.png** | Simplified Mermaid overview diagram showing class hierarchy and high-level structure.                                                                                                                                                                       |
+| **packageUML.md**                    | Markdown source for the Mermaid diagram used to generate a simplified class hierarchy                                                                                                                                                                       |
 
 
 ### Figure 1 — Assessment Class
