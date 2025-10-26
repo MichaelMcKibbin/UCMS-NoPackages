@@ -46,8 +46,10 @@ public class Student extends User {
         this.gpa = gpa;
     }
 
-    public void enrollCourse(String courseName) {
-        System.out.println(getFirstname() + " has enrolled in " + courseName);
+    public void enrollInCourse(Course course) {
+        this.course = course.getCourseCode(); // or store a Course reference instead of String
+        course.enrollStudent(this);
+        System.out.println(getFirstname() + " has enrolled in " + course.getCourseName());
     }
 
     // Displays the student's current GPA.

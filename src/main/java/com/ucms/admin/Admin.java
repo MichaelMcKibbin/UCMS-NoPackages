@@ -1,7 +1,6 @@
 package com.ucms.admin;
 
 import com.ucms.domain.*;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -25,19 +24,19 @@ public class Admin extends User {
     }
 
 
-    // 1) no-arg style (minimal defaults) – calls the full constructor
+    // 1) no-arg style (minimal defaults) – calls the full constructor (super)
     public Admin() {
         this("Admin", "User", "admin@example.com", "changeme", "N/A", "N/A",
                 "ADMIN", LocalDate.now());
     }
 
-    // 2) partial
+    // 2) partial - chains to full constructor
     public Admin(String firstname, String lastname, String email) {
         this(firstname, lastname, email, "changeme", "N/A", "N/A",
                 "ADMIN", LocalDate.now());
     }
 
-    // 3) full – actually calls super(...)
+    // 3) full – calls super
     public Admin(String firstname, String lastname, String email, String password,
                  String address, String phone, String role, LocalDate createdAt) {
         super(firstname, lastname, email, password, address, phone);

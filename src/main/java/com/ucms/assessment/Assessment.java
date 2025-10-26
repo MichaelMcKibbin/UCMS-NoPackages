@@ -1,10 +1,7 @@
 package com.ucms.assessment;
 
 import com.ucms.assessment.AssessmentType;
-import com.ucms.domain.CourseModule;
-import com.ucms.domain.Lecturer;
-import com.ucms.domain.Student;
-
+import com.ucms.domain.*;
 import java.time.LocalDate;
 import java.util.Objects;
 

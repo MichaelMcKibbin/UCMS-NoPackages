@@ -1,6 +1,5 @@
 package com.ucms.domain;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,8 +72,11 @@ public class Course {
      * @param student Student to enroll
      */
     public void enrollStudent(Student student) {
-        students.add(student);
-        System.out.println(student.getFirstname() + " " + student.getLastname() + " has been enrolled in " + courseName);
+        if (!students.contains(student)) {
+            students.add(student);
+            student.setCourse(String.valueOf(this));
+            System.out.println(student.getFirstname() + " " + student.getLastname() + " has been enrolled in " + courseName);
+        }
     }
 
     /**

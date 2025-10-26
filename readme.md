@@ -1,4 +1,4 @@
-# University Coursework Management System (UCMS) — Exercise 1 (Revised Version)
+# University Coursework Management System (UCMS) — (Revised) Exercise 1 
 
 **Student Name:** Michael McKibbin<br>
 **Module:** Software Development<br> 
@@ -175,7 +175,7 @@ Expected output includes meaningful messages showing the entities created and ac
 
 ---
 
-## 10. Design Reflection
+## 10. Design Rationale
 
 The revised UCMS design focuses on clarity, maintainability.
 
@@ -191,4 +191,6 @@ Constructor chaining in `Admin` illustrates reuse and reduces redundancy, while 
 
 Encapsulation was strengthened by keeping fields private and using controlled accessors (getters and setters), improving data integrity.
 
-Overall, this iteration produces good package separation, meaningful object interactions, and console outputs that demonstrate OOP principles.
+This iteration produces good package separation, meaningful object interactions, and console outputs that demonstrate OOP principles.
+
+This OOP design ensures that new user types or assessment forms can be added with minimal modification, demonstrating the Open/Closed Principle in practice.
