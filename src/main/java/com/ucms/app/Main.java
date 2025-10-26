@@ -328,7 +328,7 @@ public class Main {
 
         //  Assessments (a polymorphic list) 
         LocalDate today = LocalDate.now();
-        assessments.add(new FinalExam(
+        assessments.add(new FinalExamAssessment(
                 IdGenerator.next("A"),
                 m1, s1, lec1,
                 100, 0.6,
@@ -374,7 +374,7 @@ public class Main {
                 15
         ));
 
-        assessments.add(new FinalExam(
+        assessments.add(new FinalExamAssessment(
                 IdGenerator.next("A"),
                 m4, s4, lec1,
                 90, 0.5,
@@ -402,7 +402,7 @@ public class Main {
                 20
         ));
 
-        assessments.add(new FinalExam(
+        assessments.add(new FinalExamAssessment(
                 IdGenerator.next("A"),
                 m7, s2, lec1,
                 100, 0.6,
@@ -430,7 +430,7 @@ public class Main {
                 25
         ));
 
-        assessments.add(new FinalExam(
+        assessments.add(new FinalExamAssessment(
                 IdGenerator.next("A"),
                 m10, s5, lec2,
                 85, 0.5,
@@ -458,7 +458,7 @@ public class Main {
                 18
         ));
 
-        assessments.add(new FinalExam(
+        assessments.add(new FinalExamAssessment(
                 IdGenerator.next("A"),
                 m13, s3, lec5,
                 95, 0.55,
@@ -486,7 +486,7 @@ public class Main {
                 22
         ));
 
-        assessments.add(new FinalExam(
+        assessments.add(new FinalExamAssessment(
                 IdGenerator.next("A"),
                 m16, s1, lec6,
                 80, 0.5,
@@ -513,7 +513,7 @@ public class Main {
                 today.plusDays(8),
                 20
         ));
-        assessments.add(new FinalExam(
+        assessments.add(new FinalExamAssessment(
                 IdGenerator.next("A"),
                 m19, s4, lec9,
                 90, 0.6,
@@ -538,7 +538,7 @@ public class Main {
                 today.plusDays(12),
                 25
         ));
-        assessments.add(new FinalExam(
+        assessments.add(new FinalExamAssessment(
                 IdGenerator.next("A"),
                 m22, s2, lec6,
                 85, 0.6,
@@ -563,7 +563,7 @@ public class Main {
                 today.plusDays(10),
                 30
         ));
-        assessments.add(new FinalExam(
+        assessments.add(new FinalExamAssessment(
                 IdGenerator.next("A"),
                 m25, s5, lec6,
                 95, 0.7,

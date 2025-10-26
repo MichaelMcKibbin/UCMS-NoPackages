@@ -11,10 +11,13 @@
 ## 1. Overview
 
 This project implements the revised version of Exercise 1, the **University Coursework Management System (UCMS)** in Java.  
-It demonstrates core **Object-Oriented Programming (OOP)** principles — *encapsulation, inheritance, polymorphism, abstraction,* and *composition* — through three main components:
+### Objective: 
+To apply and demonstrate **Object-Oriented Programming (OOP)** principles through the design and implementation of a University Coursework Management System in Java.
+
+The system demonstrates core Object-Oriented Programming (OOP) principles — *encapsulation, inheritance, polymorphism, abstraction,* and *composition* — through three main components:
 
 1. **Assessment Module** – an abstract base class `Assessment` and three concrete subclasses:  
-   - `FinalExam`, 
+   - `FinalExamAssessment`, 
    - `TestAssessment`, and 
    - `AssignmentAssessment`.
    
@@ -47,7 +50,7 @@ Using packages to group real-world models together:
 com/ucms/
     ├─ admin/ → Admin (extends User)
     ├─ app/ → Main entry point (Main.java)
-    ├─ assessment/ → Assessment (abstract), AssessmentType, AssignmentAssessment, FinalExam, TestAssessment 
+    ├─ assessment/ → Assessment (abstract), AssessmentType, AssignmentAssessment, FinalExamAssessment, TestAssessment 
     ├─ domain/ → Course, CourseModule, Lecturer, Student, User 
     └─ support/ → IdGenerator
 ```
@@ -75,7 +78,7 @@ The following diagrams and images are stored in the `/docs/` folder.
 
 | Diagram                               | Description                                                                                                                                                                                      |
 |:--------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **AssessmentModuleClass.png**         | Shows the abstract `Assessment` class and its three concrete subclasses (`FinalExam`, `TestAssessment`, `AssignmentAssessment`), with associations to `CourseModule`, `Student`, and `Lecturer`. |
+| **AssessmentModuleClass.png**         | Shows the abstract `Assessment` class and its three concrete subclasses (`FinalExamAssessment`, `TestAssessment`, `AssignmentAssessment`), with associations to `CourseModule`, `Student`, and `Lecturer`. |
 | **AssessmentModuleRelationships.png** | Shows the relationship hierarchy of the `Assessment` class.                                                                                                                                      |
 | **AdminRelationships.png**            | Shows `Admin` inheriting from `User` and its associations to `Student`, `Lecturer`, `Course`, and `CourseModule`.                                                                                |
 | **MainSimulation.png**                | Illustrates how the `Main` class coordinates the simulation, highlighting object interactions and polymorphic assessment handling.                                                               |
@@ -87,7 +90,7 @@ The following diagrams and images are stored in the `/docs/` folder.
 ### Figure 1 — Assessment Module Class
 <p style="text-align: center;">
   <img src="docs/AssessmentModuleClass.png" alt="Assessment Module Class UML" width="600"><br>
-  <em>Figure 1: Assessment module class hierarchy showing the abstract <code>Assessment</code> class and its three concrete subclasses (<code>FinalExam</code>, <code>TestAssessment</code>, and <code>AssignmentAssessment</code>) with associations to <code>CourseModule</code>, <code>Student</code>, and <code>Lecturer</code>.</em>
+  <em>Figure 1: Assessment module class hierarchy showing the abstract <code>Assessment</code> class and its three concrete subclasses (<code>FinalExamAssessment</code>, <code>TestAssessment</code>, and <code>AssignmentAssessment</code>) with associations to <code>CourseModule</code>, <code>Student</code>, and <code>Lecturer</code>.</em>
 </p>
 
 ### Figure 2 — Assessment Module Relationships
@@ -117,7 +120,7 @@ The following diagrams and images are stored in the `/docs/` folder.
 
 ---
 
-## 5. Running the Program
+## 5. Procedure (Running the Program)
 
 1. Open the project in **IntelliJ IDEA** or any IDE supporting Maven.
 2. Run **`com.ucms.app.Main`** (`Main.java`).
@@ -138,7 +141,7 @@ Expected output includes meaningful messages showing the entities created and ac
 | Principle                 | Example                                                                                                                   |
 |:--------------------------|:--------------------------------------------------------------------------------------------------------------------------|
 | **Encapsulation**         | Private fields with getters/setters in `CourseModule` and `Assessment`.                                                   |
-| **Inheritance**           | `Admin`, `Lecturer`, `Student` extend `User`; `FinalExam`, `TestAssessment`, `AssignmentAssessment` extend `Assessment`.  |
+| **Inheritance**           | `Admin`, `Lecturer`, `Student` extend `User`; `FinalExamAssessment`, `TestAssessment`, `AssignmentAssessment` extend `Assessment`.  |
 | **Polymorphism**          | `for (Assessment a : assessments)` iterates through multiple types with overridden `summary()` methods.                   |
 | **Abstraction**           | `Assessment` defines shared structure and abstract behaviour for its subclasses.                                          |
 | **Composition**           | `Course` “has-a” list of `CourseModule` and `Student`; `CourseModule` “has-a” `Lecturer`.                                 |
@@ -177,20 +180,14 @@ Expected output includes meaningful messages showing the entities created and ac
 
 ## 10. Design Rationale
 
-The revised UCMS design focuses on clarity, maintainability.
+The revised UCMS design prioritises clarity, consistency, and maintainability, while demonstrating the core principles of encapsulation, inheritance, and polymorphism in a cohesive and extensible object-oriented structure. The design was guided by the goals of Exercise 1 — to produce a modular, well-structured system that models realistic academic relationships between users, courses, and assessments.
 
-Renaming `Module` to `CourseModule` eliminated a Java naming conflict and clarified its role within a `Course`.
-While it was possible to import the `com.ucms.domain.Module` class, it was unclear in the code that it was a UCMS class and not a Java class.
-To avoid confusion, the class was renamed to `CourseModule` with appropriate changes to the use of 'module' in the code. 
+Renaming the original Module class to CourseModule eliminated a potential naming conflict with java.lang.Module and clarified the class’s specific role within a Course. Although it was technically possible to retain the original name, using imports, doing so risked confusion between UCMS domain classes and Java system classes. The updated naming convention enhances readability and reinforces clear semantic intent throughout the codebase.
 
-Consolidating Admin operations into a single class (`Admin`) and using in-memory collections (`List<>`) to manage data made the code more concise and easier to maintain.
+Administrative functionality was consolidated within a single Admin class, using in-memory collections (List<>) to manage entities such as students, lecturers, and courses. This approach reduces redundancy, simplifies maintenance, and provides a flexible foundation that could later be extended to persistent storage without structural changes.
 
-The assessment hierarchy was streamlined from four classes to three (`FinalExam`, `TestAssessment`, and `AssignmentAssessment`), each extending a common abstract base to demonstrate inheritance and polymorphism.  
+Since refences to 'Quiz' were removed in the revised specifications, the assessment hierarchy was streamlined from four classes to three — FinalExamAssessment, TestAssessment, and AssignmentAssessment — each extending a shared abstract superclass Assessment. This refactoring demonstrates inheritance and polymorphism while ensuring that common logic is defined once and reused across all assessment types.
 
-Constructor chaining in `Admin` illustrates reuse and reduces redundancy, while composition between `Course`, `CourseModule`, and `Lecturer` emphasizes “has-a” relationships.
+Constructor chaining in the Admin class promotes code reuse and consistent object initialisation, while composition between Course, CourseModule, and Lecturer models “has-a” relationships that mirror real-world associations. Encapsulation is reinforced through the use of private fields and controlled accessors, preserving data integrity and supporting future scalability.
 
-Encapsulation was strengthened by keeping fields private and using controlled accessors (getters and setters), improving data integrity.
-
-This iteration produces good package separation, meaningful object interactions, and console outputs that demonstrate OOP principles.
-
-This OOP design ensures that new user types or assessment forms can be added with minimal modification, demonstrating the Open/Closed Principle in practice.
+Overall, this iteration delivers a cleaner and more maintainable architecture with clear package separation, logical class interactions, and console output that effectively demonstrates the intended OOP behaviours. The design achieves the educational objectives of the exercise by integrating theoretical principles into a practical and verifiable implementation.

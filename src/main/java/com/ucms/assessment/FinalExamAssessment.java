@@ -1,6 +1,5 @@
 package com.ucms.assessment;
 
-import com.ucms.assessment.*;
 import com.ucms.domain.*;
 
 import java.time.Duration;
@@ -8,11 +7,11 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /** Concrete assessment: Final Exam. */
-public class FinalExam extends com.ucms.assessment.Assessment {
+public class FinalExamAssessment extends com.ucms.assessment.Assessment {
     private final Duration duration;        // e.g., 2h
     private final int numberOfQuestions;    // optional field
 
-    public FinalExam(
+    public FinalExamAssessment(
             String id,
             CourseModule module,
             Student student,
