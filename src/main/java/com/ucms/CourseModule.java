@@ -1,4 +1,4 @@
-package com.ucms.domain;
+package com.ucms;
 
 /**
  * The CourseModule class represents an academic module within a course.

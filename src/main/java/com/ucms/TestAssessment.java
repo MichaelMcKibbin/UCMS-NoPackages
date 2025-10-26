@@ -1,11 +1,9 @@
-package com.ucms.assessment;
-
-import com.ucms.domain.*;
+package com.ucms;
 
 import java.time.LocalDate;
 
 /** Concrete assessment: Test (shorter than final). */
-public class TestAssessment extends com.ucms.assessment.Assessment {
+public class TestAssessment extends Assessment {
     private final int numberOfQuestions;
 
     public TestAssessment(

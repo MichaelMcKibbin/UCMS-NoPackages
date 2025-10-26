@@ -1,4 +1,4 @@
-package com.ucms.domain;
+package com.ucms;
 
 import java.util.ArrayList;
 import java.util.List;

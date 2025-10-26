@@ -1,7 +1,5 @@
-package com.ucms.assessment;
+package com.ucms;
 
-import com.ucms.assessment.AssessmentType;
-import com.ucms.domain.*;
 import java.time.LocalDate;
 import java.util.Objects;
 

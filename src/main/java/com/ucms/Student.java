@@ -1,4 +1,4 @@
-package com.ucms.domain;
+package com.ucms;
 
 public class Student extends User {
     // Unique ID assigned to the student

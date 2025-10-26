@@ -1,4 +1,4 @@
-package com.ucms.support;
+package com.ucms;
 
 import java.util.concurrent.atomic.AtomicLong;
 

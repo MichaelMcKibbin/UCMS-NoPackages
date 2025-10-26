@@ -1,0 +1,71 @@
+@startuml
+title UCMS – Assessment Class Diagram
+
+' ------------------ Core Classes ------------------
+
+enum AssessmentType {
+  FINAL_EXAM
+  TEST
+  ASSIGNMENT
+}
+
+abstract class Assessment {
+  - id : String
+  - module : CourseModule
+  - student : Student
+  - lecturer : Lecturer
+  - totalMarks : int
+  - weight : double
+  - assignedDate : LocalDate
+  - dueDate : LocalDate
+  - takenDate : LocalDate
+  + getType() : AssessmentType
+  + summary() : String
+  + isOverdue(today:LocalDate) : boolean
+  + weightedScore(achieved:int) : double
+}
+
+class FinalExamAssessment {
+  - duration : Duration
+  - numberOfQuestions : int
+}
+
+class TestAssessment {
+  - numberOfQuestions : int
+}
+
+class AssignmentAssessment {
+  - requiresSubmissionLink : boolean
+}
+
+Assessment <|-- FinalExamAssessment
+Assessment <|-- TestAssessment
+Assessment <|-- AssignmentAssessment
+
+' ------------------ Supporting Domain Classes ------------------
+
+class CourseModule {
+  - courseModuleCode : String
+  - moduleName : String
+  - lecturer : Lecturer
+}
+
+class Student {
+  - studentId : String
+  - programme : String
+  - gpa : double
+}
+
+class Lecturer {
+  - lecturerId : String
+  - department : String
+}
+
+' ------------------ Relationships ------------------
+
+Assessment --> CourseModule : relates to
+Assessment --> Student : taken by
+Assessment --> Lecturer : assigned by
+CourseModule --> Lecturer : taught by
+
+@enduml

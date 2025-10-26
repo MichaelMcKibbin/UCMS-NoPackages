@@ -1,10 +1,9 @@
-package com.ucms.assessment;
+package com.ucms;
 
-import com.ucms.domain.*;
 import java.time.LocalDate;
 
 /** Concrete assessment: Assignment (submission-based). */
-public class AssignmentAssessment extends com.ucms.assessment.Assessment {
+public class AssignmentAssessment extends Assessment {
     private final boolean requiresSubmissionLink;
 
     public AssignmentAssessment(

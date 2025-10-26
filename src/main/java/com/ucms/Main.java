@@ -1,18 +1,13 @@
-package com.ucms.app;
-
-import com.ucms.admin.*;
-import com.ucms.assessment.*;
-import com.ucms.domain.*;
-import com.ucms.support.*;
+package com.ucms;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/******************************
-***** demo system actions *****
-*******************************/
+/*
+* demo system actions
+*/
 
 public class Main {
     public static void main(String[] args) {
@@ -28,9 +23,7 @@ public class Main {
         Admin admin2 = new Admin("Jenny", "Block", "jenny@mail.com"); // partial constructor -> chains to full
         Admin admin3 = new Admin("Jane", "Doe", "jane@mail.com", "P4$$w0rd", "123 main st, anytown", "089 555 1212", "Supervisor", LocalDate.now());
 
-        /*******************************
-        **** CREATE SOME TEST DATA ****
-        *******************************/
+        // CREATE SOME TEST DATA
         
         System.out.println("\n[Admin] Created via empty constructor.\n");
         System.out.println("\n[Admin2] Created via partial constructor: " + admin2.getFirstname() + " " + admin2.getLastname() +", email: " + admin2.getEmail()+"\n");
@@ -583,13 +576,10 @@ public class Main {
 
         System.out.println("\n Added assessments to list.\n");
 
-        /*******************************
-        ******* END OF TEST DATA *******
-        *******************************/
+        // END OF TEST DATA
 
-        /******************************
-        ******** DEMO OUTPUT  *********
-        *******************************/
+        // DEMO OUTPUT
+
 
         System.out.println("\n\n== Assessments ==\n");
         

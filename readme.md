@@ -34,7 +34,11 @@ The system demonstrates core Object-Oriented Programming (OOP) principles — *e
 
 ---
 
-## 2. Project Structure (Packages)
+## 2. Project Structure (No Packages)
+
+Note: This version was refactored to remove sub-packages for simplicity. All classes now reside in the default project directory, but maintain their logical groupings as shown in the UML diagrams.
+
+<!--
 Using packages to group real-world models together:
 
 
@@ -54,7 +58,7 @@ com/ucms/
     ├─ domain/ → Course, CourseModule, Lecturer, Student, User 
     └─ support/ → IdGenerator
 ```
-
+-->
 ---
 
 ## 3. Key Features
@@ -87,52 +91,70 @@ The following diagrams and images are stored in the `/docs/` folder.
 | **src.md**                            | Mermaid UML class diagram source file.                                                                                                                                                           |
 
 
-### Figure 1 — Assessment Module Class
+### Figure 1 — Assessment Class
+The Assessment Class Diagram illustrates the inheritance and composition relationships that define the assessment subsystem of the UCMS. <br>
+The abstract Assessment class provides a shared structure and behaviour for all assessment types, while its concrete subclasses (FinalExamAssessment, TestAssessment, and AssignmentAssessment) specialise that behaviour through unique attributes such as duration, number of questions, or submission requirements. <br>
+Associations to CourseModule, Student, and Lecturer demonstrate composition and contextual linkage—each assessment belongs to a module, is assigned by a lecturer, and is taken by a student. This design effectively demonstrates inheritance, abstraction, and composition in practice, ensuring extensibility for future assessment types.
 <p style="text-align: center;">
-  <img src="docs/AssessmentModuleClass.png" alt="Assessment Module Class UML" width="600"><br>
+  <img src="docs/AssessmentClass.png" alt="Assessment Module Class UML" width="600"><br>
   <em>Figure 1: Assessment module class hierarchy showing the abstract <code>Assessment</code> class and its three concrete subclasses (<code>FinalExamAssessment</code>, <code>TestAssessment</code>, and <code>AssignmentAssessment</code>) with associations to <code>CourseModule</code>, <code>Student</code>, and <code>Lecturer</code>.</em>
 </p>
 
-### Figure 2 — Assessment Module Relationships
-<p style="text-align: center;">
-  <img src="docs/AssessmentModuleRelationships.png" alt="Assessment Module Relationships UML" width="600"><br>
-  <em>Figure 2: Relationship hierarchy of the <code>Assessment</code> class illustrating inheritance and links to domain entities.</em>
-</p>
-
-### Figure 3 — Main Simulation Diagram
+### Figure 2 — Main Simulation Diagram
 <p style="text-align: center;">
   <img src="docs/MainSimulation.png" alt="Main Simulation Diagram" width="600"><br>
-  <em>Figure 3: Main simulation sequence diagram demonstrating how <code>Main</code> coordinates user interactions and polymorphic assessment handling.</em>
+  <em>Figure 2: Main simulation sequence diagram demonstrating how <code>Main</code> coordinates user interactions and polymorphic assessment handling.</em>
 </p>
 
-### Figure 4 — Admin Relationships
+### Figure 3 — Admin Relationships
 <p style="text-align: center">
   <img src="docs/AdminRelationships.png" alt="Admin Relationships UML" width="600"/><br>
-  <em>Figure 4: Admin class relationships with User, Student, Lecturer, and CourseModule.</em>
+  <em>Figure 3: Admin class relationships with User, Student, Lecturer, and CourseModule.</em>
 </p>
 
-### Figure 5 — Class Model
+### Figure 4 — Class Model
+The complete UCMS Class Model presents the full architecture of the system, integrating all major entities and their relationships. <br>
+It highlights the three primary inheritance hierarchies—User (extended by Admin, Lecturer, and Student), Assessment (extended by the specific assessment types), and the enum AssessmentType. <br>
+The diagram also shows how composition and aggregation connect the academic structures: 
+- A Course contains multiple CourseModule objects, 
+- each linked to a Lecturer and 
+- associated with enrolled Students. 
+
+Administrative operations, represented by the Admin class, coordinate these relationships and demonstrate encapsulated management of data. The Main class acts as the entry point, orchestrating interactions and demonstrating polymorphism through the Assessment hierarchy. <br>
+Overall, the model conveys a cohesive object-oriented design that balances inheritance for reuse with composition for realistic domain modelling.
+
 <p style="text-align: center">
-  <img src="docs/ClassModel.png" alt="Class Model UML" width="600"/><br>
-  <em>Figure 5: Class diagram showing the complete UML class model.</em>
+  <img src="docs/ClassModelNoPackages.png" alt="Class Model UML" width="600"/><br>
+  <em>Figure 4: Detailed UML class Diagram.</em>
 </p>
-
 
 ---
 
 ## 5. Procedure (Running the Program)
 
-1. Open the project in **IntelliJ IDEA** or any IDE supporting Maven.
-2. Run **`com.ucms.app.Main`** (`Main.java`).
-3. The console output demonstrates:
-    - Admin creation and constructor chaining
-    - Adding/removing students and lecturers
-    - Creating courses and assigning course modules
-    - Lecturer–student–assessment relationships
-    - Polymorphic assessment iteration and output
-    - Overdue status and weighted score calculations
+1. Open the project
+- Launch your preferred IDE (e.g. IntelliJ IDEA or Eclipse).
+- Open the project folder or import the Maven project (pom.xml) to ensure all dependencies and source paths load correctly.
+- Verify that the JDK 17 (or any Java 8 +) runtime is selected.
 
-Expected output includes meaningful messages showing the entities created and actions performed.
+2. Run the main class
+- Locate and run Main.java (package com.ucms.app or root folder if using the no-package version).
+- The program can be run directly from the IDE’s Run button or via the command line using:
+```
+java com.ucms.Main
+```
+
+3. Observe the console output
+The program demonstrates:
+- Admin creation and constructor chaining
+- Adding/removing students and lecturers
+- Creating courses and assigning course modules
+- Lecturer–student–assessment relationships
+- Polymorphic assessment iteration and output
+- Overdue status and weighted score calculations
+
+Expected result:
+The console displays meaningful messages showing the entities created and the actions performed.
 
 ---
 
@@ -151,6 +173,7 @@ Expected output includes meaningful messages showing the entities created and ac
 
 ## 7. Notes on Revisions
 
+- **De-packaged this version** For simplicity, the project was de-packaged to a single root package.
 - **Renamed `Module` → `CourseModule`** to avoid conflict with `java.lang.Module` and improve clarity.
 - **Simplified “Quiz” and “Test”** into a single unified `TestAssessment` class. ('Quiz' is not mentioned in revised requirements).
 - **Consolidated Admin operations** to manage data using in-memory `List<>` structures. (No db).
@@ -174,19 +197,22 @@ Expected output includes meaningful messages showing the entities created and ac
 > **Course:** B.Sc. (Hons) in Contemporary Software Development  
 > **Institution:** Atlantic Technological University (ATU)  
 > **Year:** 2025/2026  
-> **Exercise:** UCMS – Revised Exercise 1
+> **Exercise:** UCMS – Revised Exercise 1 - No Packages
 
 ---
 
 ## 10. Design Rationale
 
-The revised UCMS design prioritises clarity, consistency, and maintainability, while demonstrating the core principles of encapsulation, inheritance, and polymorphism in a cohesive and extensible object-oriented structure. The design was guided by the goals of Exercise 1 — to produce a modular, well-structured system that models realistic academic relationships between users, courses, and assessments.
+The revised UCMS design prioritises clarity, consistency, and maintainability, while demonstrating the core principles of encapsulation, inheritance, and polymorphism in a cohesive and extensible object-oriented structure.
+
+The design was guided by the goals of Exercise 1: to produce a modular, well-structured system that models realistic academic relationships between users, courses, and assessments.
 
 Renaming the original Module class to CourseModule eliminated a potential naming conflict with java.lang.Module and clarified the class’s specific role within a Course. Although it was technically possible to retain the original name, using imports, doing so risked confusion between UCMS domain classes and Java system classes. The updated naming convention enhances readability and reinforces clear semantic intent throughout the codebase.
 
 Administrative functionality was consolidated within a single Admin class, using in-memory collections (List<>) to manage entities such as students, lecturers, and courses. This approach reduces redundancy, simplifies maintenance, and provides a flexible foundation that could later be extended to persistent storage without structural changes.
 
-Since refences to 'Quiz' were removed in the revised specifications, the assessment hierarchy was streamlined from four classes to three — FinalExamAssessment, TestAssessment, and AssignmentAssessment — each extending a shared abstract superclass Assessment. This refactoring demonstrates inheritance and polymorphism while ensuring that common logic is defined once and reused across all assessment types.
+Since references to 'Quiz' were removed in the revised specifications, the assessment hierarchy was streamlined from four classes to three — FinalExamAssessment, TestAssessment, and AssignmentAssessment — each extending a shared abstract superclass Assessment. 
+These demonstrate inheritance and polymorphism while ensuring that common logic is defined once and reused across all assessment types.
 
 Constructor chaining in the Admin class promotes code reuse and consistent object initialisation, while composition between Course, CourseModule, and Lecturer models “has-a” relationships that mirror real-world associations. Encapsulation is reinforced through the use of private fields and controlled accessors, preserving data integrity and supporting future scalability.
 

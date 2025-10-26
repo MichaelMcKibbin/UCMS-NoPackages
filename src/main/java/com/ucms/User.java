@@ -1,4 +1,4 @@
-package com.ucms.domain;
+package com.ucms;
 
 public class User {
     private String firstname;

@@ -1,0 +1,124 @@
+@startuml
+title UCMS – Revised Exercise 1 (Class Model)
+
+abstract class User {
+  - firstname : String
+  - lastname  : String
+  - email     : String
+  - password  : String
+  - address   : String
+  - phone     : String
+}
+
+class Student {
+  - studentId : String
+  - programme : String
+  - gpa : double
+  + getStudentId() : String
+}
+
+class Lecturer {
+  - lecturerId : String
+  - department : String
+  - modulesTaught : List<String>
+  + getLecturerId() : String
+  + assignModule(name:String) : void
+  + viewModules() : void
+}
+
+class Course {
+  - courseCode : String
+  - courseName : String
+  - modules : List<CourseModule>
+  - students : List<Student>
+  + addCourseModule(m:CourseModule) : void
+  + enrollStudent(s:Student) : void
+  + viewModules() : void
+  + viewStudents() : void
+}
+
+class CourseModule {
+  - courseModuleCode : String
+  - moduleName : String
+  - lecturer : Lecturer
+  + getCourseModuleCode() : String
+  + getModuleName() : String
+  + setLecturer(l:Lecturer) : void
+}
+
+enum AssessmentType {
+  FINAL_EXAM
+  TEST
+  ASSIGNMENT
+}
+
+abstract class Assessment {
+  - id : String
+  - module : CourseModule
+  - student : Student
+  - lecturer : Lecturer
+  - totalMarks : int
+  - weight : double
+  - assignedDate : LocalDate
+  - dueDate : LocalDate
+  - takenDate : LocalDate
+  + getType() : AssessmentType
+  + summary() : String
+  + isOverdue(today:LocalDate) : boolean
+  + weightedScore(achieved:int) : double
+}
+
+class FinalExamAssessment {
+  - duration : Duration
+  - numberOfQuestions : int
+}
+
+class TestAssessment {
+  - numberOfQuestions : int
+}
+
+class AssignmentAssessment {
+  - requiresSubmissionLink : boolean
+}
+
+class Admin {
+  - role : String
+  - createdAt : LocalDate
+  + addStudent(repo:List<Student>, s:Student) : void
+  + removeStudent(repo:List<Student>, id:String) : boolean
+  + addLecturer(repo:List<Lecturer>, l:Lecturer) : void
+  + removeLecturer(repo:List<Lecturer>, id:String) : boolean
+  + createCourse(repo:List<Course>, c:Course) : void
+  + addCourseModule(c:Course, m:CourseModule) : void
+  + assignCourseModuleToLecturer(m:CourseModule, l:Lecturer) : void
+  + findStudentById(repo:List<Student>, id:String) : Optional<Student>
+}
+
+class Main
+
+' ------------------ Inheritance ------------------
+User <|-- Student
+User <|-- Lecturer
+User <|-- Admin
+Assessment <|-- FinalExamAssessment
+Assessment <|-- TestAssessment
+Assessment <|-- AssignmentAssessment
+
+' ------------------ Associations ------------------
+Course "1" --> "*" CourseModule
+Course "1" --> "*" Student
+CourseModule "1" --> "1" Lecturer
+
+Admin ..> Student
+Admin ..> Lecturer
+Admin ..> Course
+Admin ..> CourseModule
+
+Main ..> Admin : uses
+Main ..> Assessment : demo polymorphism
+Main ..> Course
+Main ..> CourseModule
+Main ..> Student
+Main ..> Lecturer
+
+@enduml
