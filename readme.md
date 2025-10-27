@@ -1,12 +1,32 @@
-# University Coursework Management System (UCMS) — (Revised) Exercise 1 
+# University Coursework Management System 
 
 **Student Name:** Michael McKibbin<br>
 **Module:** Software Development<br> 
 **Module Code:** SWDE_IT803 - LY_ICSWD_B 2025/2026<br>
+**Exercise 1:** UCMS - Revised Exercise 1 - No Packages<br>
 **Lecturer:** Lusungu Mwasinga<br>
 **Date:** 26th October 2025<br>
-
 ---
+## Table of Contents
+<!-- TOC -->
+* [University Coursework Management System](#university-coursework-management-system-)
+  * [Table of Contents](#table-of-contents)
+  * [1. Overview](#1-overview)
+    * [Objective:](#objective-)
+  * [2. Project Structure (No Packages)](#2-project-structure-no-packages)
+  * [3. Key Features](#3-key-features)
+  * [4. UML Diagrams](#4-uml-diagrams)
+    * [Figure 1 — Assessment Class](#figure-1--assessment-class)
+    * [Figure 2 — Main Simulation Diagram](#figure-2--main-simulation-diagram)
+    * [Figure 3 — Admin Relationships](#figure-3--admin-relationships)
+    * [Figure 4 — Class Model](#figure-4--class-model)
+  * [5. Procedure (Running the Program)](#5-procedure-running-the-program)
+  * [6. OOP Highlights](#6-oop-highlights)
+  * [7. Notes on Revisions](#7-notes-on-revisions)
+  * [8. Technologies Used](#8-technologies-used)
+  * [9. Author](#9-author)
+  * [10. Design Rationale](#10-design-rationale)
+<!-- TOC -->
 
 ## 1. Overview
 
@@ -77,7 +97,7 @@ The table below summarises the main object-oriented principles and design featur
 
 ---
 
-## 4. UML Diagrams 
+## 4. UML Diagrams
 The following UML diagrams and image files are stored in the `/docs/` folder. Each diagram illustrates a key part of the UCMS system, its relationships, and the application of OOP principles.
 
 | Diagram                              | Description                                                                                                                                                                                                                                                 |
@@ -97,19 +117,19 @@ The Assessment Class Diagram illustrates the inheritance and composition relatio
 The abstract Assessment class provides a shared structure and behaviour for all assessment types, while its concrete subclasses (FinalExamAssessment, TestAssessment, and AssignmentAssessment) specialise that behaviour through unique attributes such as duration, number of questions, or submission requirements. <br>
 Associations to CourseModule, Student, and Lecturer demonstrate composition and contextual linkage—each assessment belongs to a module, is assigned by a lecturer, and is taken by a student. This design effectively demonstrates inheritance, abstraction, and composition in practice, ensuring extensibility for future assessment types.
 <p style="text-align: center;">
-  <img src="docs/AssessmentClass.png" alt="Assessment Module Class UML" width="600"><br>
+  <img src="docs/AssessmentClass.png" alt="Assessment Module Class UML" width="700"><br>
   <em>Figure 1: Assessment module class hierarchy showing the abstract <code>Assessment</code> class and its three concrete subclasses (<code>FinalExamAssessment</code>, <code>TestAssessment</code>, and <code>AssignmentAssessment</code>) with associations to <code>CourseModule</code>, <code>Student</code>, and <code>Lecturer</code>.</em>
 </p>
 
 ### Figure 2 — Main Simulation Diagram
 <p style="text-align: center;">
-  <img src="docs/MainSimulation.png" alt="Main Simulation Diagram" width="600"><br>
+  <img src="docs/MainSimulation.png" alt="Main Simulation Diagram" width="700"><br>
   <em>Figure 2: Main simulation sequence diagram demonstrating how <code>Main</code> coordinates user interactions and polymorphic assessment handling.</em>
 </p>
 
 ### Figure 3 — Admin Relationships
 <p style="text-align: center">
-  <img src="docs/AdminRelationships.png" alt="Admin Relationships UML" width="600"/><br>
+  <img src="docs/AdminRelationships.png" alt="Admin Relationships UML" width="700"/><br>
   <em>Figure 3: Admin class relationships with User, Student, Lecturer, and CourseModule.</em>
 </p>
 
@@ -125,7 +145,7 @@ Administrative operations, represented by the Admin class, coordinate these rela
 Overall, the model conveys a cohesive object-oriented design that balances inheritance for reuse with composition for realistic domain modelling.
 
 <p style="text-align: center">
-  <img src="docs/ClassModelNoPackages.png" alt="Class Model UML" width="600"/><br>
+  <img src="docs/ClassModelNoPackages.png" alt="Class Model UML" width="700"/><br>
   <em>Figure 4: Detailed UML class Diagram.</em>
 </p>
 
